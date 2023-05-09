@@ -32,7 +32,3 @@ def open_gwnaku_ploygon():
     plt.title('Polygon Visualization')
     plt.grid(True)
     plt.show()
-
-
-if __name__  == "__name__":
-    pharmacy = pharmacy_gwnakgu_mapping()

@@ -18,7 +18,7 @@ def pharmacy_data(args):
     
     location_data = location_data.dropna(how='all')
     
-    transformer = pyproj.Transformer.from_crs("epsg:2097", "EPSG:4326")
+    transformer = pyproj.Transformer.from_crs("epsg:2097", "epsg:4326")
 
     for idx, row in location_data.iterrows():
         origin_x = row[0]

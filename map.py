@@ -16,21 +16,14 @@ def seoul_geojson_mapping():
     return m
 
 
-def pharmacy_gwnakgu_mapping():
-    map_osm = folium.Map(location=[37.475386, 126.953844], zoom_start=14)
+def pharmacy_gwnakgu_mapping(args, location_data):
 
-    folium.Circle([37.486291, 126.947371], popup='밝은미소약국',radius=80, color="red").add_to(map_osm)
-    folium.Circle([37.484570, 126.930107], popup='365열린약국',radius=100, color="orange").add_to(map_osm)
-    folium.Circle([37.484419, 126.927725], popup='호호약국',radius=100, color="yellow").add_to(map_osm)
-    folium.Circle([37.486291, 126.947373], popup='가까운약국',radius=100, color="green").add_to(map_osm)
-    folium.Circle([37.476589, 126.958770], popup='대림약국',radius=100, color="blue").add_to(map_osm)
-    folium.Circle([37.475452, 126.965446], popup='새태평양온누리약국',radius=100, color="purple").add_to(map_osm)
-    folium.Circle([37.484563, 126.942898], popup='두산약국',radius=100, color="pink").add_to(map_osm)
-    folium.Circle([37.482163, 126.942714], popup='봉천프라자약국',radius=100, color="black").add_to(map_osm)
-    folium.Circle([37.482622, 126.942692], popup='육당약국',radius=100, color="brown").add_to(map_osm)
-    folium.Circle([37.482724, 126.942778], popup='휴베이스다정약국',radius=100, color="gray").add_to(map_osm)
+    map_pharmacy = folium.Map(location=[37.475386, 126.953844], zoom_start=14)
 
-    return map_osm
+    for _, row in location_data.iterrows():
+        folium.Circle(location=[row[0],row[1]], radius=80, color="red").add_to(map_pharmacy)
+
+    return map_pharmacy
 
 def mapping():
 

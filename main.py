@@ -5,7 +5,7 @@ import folium
 import webbrowser
 import pharmacy_data_pre
 import argparse
-
+import map
 
 
 
@@ -20,6 +20,12 @@ def main(args):
 
     pharmacy_location_data = pharmacy_data_pre.pharmacy_data(args)
 
+    print(pharmacy_location_data)
+    map_pharmacy = map.pharmacy_gwnakgu_mapping(args, pharmacy_location_data)
+
+    map_pharmacy.save("./test.html")
+
+    webbrowser.open("test.html")
     
 
     return

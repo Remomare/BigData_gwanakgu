@@ -7,12 +7,6 @@ import data_preprocessing
 import argparse
 import map
 
-def visualizaition_pharmacy_location(args):
-    
-
-
-    return
-
 
 def main(args):
 
@@ -28,6 +22,14 @@ def main(args):
 
         webbrowser.open(args.pharmacy_location_map_file_name)
 
+    if args.visulization_population_of_gwanakgu_by_dong == True:
+        population_of_gwankgu_by_dong  = data_preprocessing.population_of_gwanakgu_by_dong_data(args)
+        number_of_pharmacy_by_dong = data_preprocessing.pharmacy_location_by_dong_data(args)
+
+        #print(population_of_gwankgu_by_dong)
+        print(number_of_pharmacy_by_dong)
+
+
     return
 
 if __name__ == "__main__":
@@ -40,8 +42,13 @@ if __name__ == "__main__":
     parser.add_argument('--pharmacy_location_map_path', default='./location_of_pharmacy.html', type=str,
                         help="pharmacy location map path")
     
+    parser.add_argument('--population_of_gwanakgu_by_dong', default="./population_of_gwanakgu_by_dong_20220930.csv", type=str)
 
-    parser.add_argument('--visualization_pharmacy', default=True, type=bool )
+    parser.add_argument('--parmacy_location_by_dong_file_path', default="./pharmacy_gwanakgu_20220809.csv", type=str)
+    
+
+    parser.add_argument('--visualization_pharmacy', default=False, type=bool )
+    parser.add_argument('--visulization_population_of_gwanakgu_by_dong', default= True, type=bool)
 
 
     args = parser.parse_args()

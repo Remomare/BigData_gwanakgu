@@ -30,13 +30,14 @@ def pharmacy_data(args):
     
     return location_data
 
-def main():
-    location_data = pharmacy_data()
+def population_of_gwanakgu_by_dong_data(args):
 
-    print(location_data)
+    file_path = args.population_of_gwanakgu_by_dong
+
+    if file_path is None:
+        file_path = "./population_of_gwanakgu_by_dong_20220930.csv"
+
+    data_set = pd.read_csv(file_path)
+
 
     return
-
-
-if __name__ == "__main__" :
-    main()

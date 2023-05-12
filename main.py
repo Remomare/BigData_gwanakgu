@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon 
 import folium
 import webbrowser
-import pharmacy_data_pre
+import data_preprocessing
 import argparse
 import map
 
@@ -18,7 +18,7 @@ def main(args):
 
     
     if args.visualization_pharmacy == True:
-        pharmacy_location_data = pharmacy_data_pre.pharmacy_data(args)
+        pharmacy_location_data = data_preprocessing.pharmacy_data(args)
 
         print(pharmacy_location_data)
 

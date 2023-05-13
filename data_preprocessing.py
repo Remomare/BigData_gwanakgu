@@ -37,7 +37,7 @@ def population_of_gwanakgu_by_dong_data(args):
     if file_path is None:
         file_path = "./population_of_gwanakgu_by_dong_20220930.csv"
 
-    data_set = pd.read_csv(file_path, encoding="utf-8", index_col=0)
+    data_set = pd.read_csv(file_path, encoding="utf-8")
 
     data_set.drop(['구성비(계)','구성비(남)','구성비(여)','성비','세대수','세대당인구'], axis=1, inplace=True)
 
@@ -50,7 +50,7 @@ def pharmacy_location_by_dong_data(args):
     if filepath == None:
         filepath = "./pharmacy_regulatory_gwnakgu.csv"
 
-    data_set = pd.read_csv(filepath, encoding="utf-8")
+    data_set = pd.read_csv(filepath, encoding="utf-8", index_col=0)
 
     mask_1 = data_set["영업상태코드"] == 1
     filtered_data = data_set.loc[mask_1, : ]
@@ -58,8 +58,6 @@ def pharmacy_location_by_dong_data(args):
     location_data = filtered_data[['지번주소']]
 
     location_data = location_data.dropna(how='all')
-
-    print(location_data)
 
     dong_list = ['보라매동', '청림동', '성현동', '행운동', '낙성대동', '청룡동',
                 '은천동', '중앙동', '인헌동', '남현동', '서원동', '신원동', '서림동', '봉천동',
@@ -75,3 +73,13 @@ def pharmacy_location_by_dong_data(args):
         pharmacy_number_set.loc[0, dong] = count
     
     return pharmacy_number_set
+
+def population_of_gwanakgu(args):
+
+    file_path = args.population_of_gwanakgu_file_path
+
+    data_set = pd.read_csv(file_path, encoding='utf-8')
+
+    data_set.dropna(axis=1, inplace=True)
+
+    return data_set

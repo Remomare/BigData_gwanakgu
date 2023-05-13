@@ -60,8 +60,8 @@ def pharmacy_location_by_dong_data(args):
     location_data = location_data.dropna(how='all')
 
     dong_list = ['보라매동', '청림동', '성현동', '행운동', '낙성대동', '청룡동',
-                '은천동', '중앙동', '인헌동', '남현동', '서원동', '신원동', '서림동', '봉천동',
-                '신사동', '신림동', '난향동', '조원동', '대학동', '삼성동', '미성동', '난곡동']
+                '은천동', '중앙동', '인헌동', '남현동', '서원동', '신원동', '서림동',
+                '신사동', '신림동', '난향동', '조원동', '대학동', '삼성동', '미성동', '난곡동', '봉천동']
         
     pharmacy_number_set = pd.DataFrame(index=[0], columns=dong_list)
 
@@ -78,7 +78,7 @@ def population_of_gwanakgu(args):
 
     file_path = args.population_of_gwanakgu_file_path
 
-    data_set = pd.read_csv(file_path, encoding='utf-8')
+    data_set = pd.read_csv(file_path, encoding='utf-8', index_col=0)
 
     data_set.dropna(axis=1, inplace=True)
 
